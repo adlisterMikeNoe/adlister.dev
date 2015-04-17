@@ -1,6 +1,7 @@
 <?php  ?>
-<DOCTYPE <html>
-<head>
+<!DOCTYPE html>
+<html>
+
 	<title>Login</title>
 </head>
 <body>
