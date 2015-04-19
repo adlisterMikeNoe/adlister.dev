@@ -1,6 +1,6 @@
 <?php
-require_once '../Auth.php';
-require_once '../Input.php';
+require_once '../utils/Auth.php';
+require_once '../utils/Input.php';
 
 session_start();
 
@@ -10,7 +10,7 @@ session_start();
 // };
 
 if(Auth::check()) {
-	header('Location: authorized.php');
+	header('Location: index.php');
 	exit();
 };
 
@@ -31,7 +31,7 @@ if(Input::has('username') && Input::has('password')){
 	// }else{
 	// 	$message = 'Invalid username and password';
 	// }
-	$user = Auth::user()
+	// $user = Auth::user()
 	
 
 // var_dump($_SESSION)
@@ -46,7 +46,7 @@ if(Input::has('username') && Input::has('password')){
 <body>
 	<h2> Please input your username and password </h3>
 		<?= $message ?>
-    <form action = "login.php" method="POST">
+    <form action = "index.php" method="POST">
         <label>Username</label>
         <input type="username" name="username"><br>
         <label>Password</label>
