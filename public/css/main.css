@@ -1,31 +1,39 @@
-<style>
-#menu { 
-   margin: 0; 
-   padding: .3em 0 .3em 0; 
-   background: #ddeebb; 
-   width: 100%; 
-   text-align: center; 
+.navbar-brand{
+   margin-top: -3px;
 }
-#menu { 
-   margin: 0; 
-   padding: .3em 0 .3em 0; 
-   background: #ddeebb; 
-   width: 100%; 
-   text-align: center; 
+.btn-primary {
+  color: #fff;
+  background-color: #494949;
+  border-color: #494949;
 }
-#menu ul a:active{ 
-   margin: 0; 
-   padding: .3em .4em .3em .4em; 
-   text-decoration: none; 
-   font-weight: bold; 
-   font-size: medium; 
-   color: #227755; 
-} 
-#menu ul a:hover{ 
-   margin: 0; 
-   padding: .3em .4em .3em .4em; 
-   text-decoration: none; 
-   font-weight: bold; 
-   font-size: medium; 
+
+.btn-primary:hover {
+  
+  background-color: #3e3e3e;
+  border-color: #3e3e3e;
 }
-</style>
+#nav-input{
+   width:300px;
+}
+
+.header {
+  color: #168ccc;
+  font-size: 27px;
+  padding: 10px;
+}
+
+.bigicon {
+  font-size: 35px;
+  color: #168ccc;
+}
+.well {
+   background-color: #ffffff;
+   border-top: none;
+}
+.well .well-sm {
+   background-color: #ffffff;
+   border-top: none;
+}
+legend { 
+   border-bottom: none;
+}
