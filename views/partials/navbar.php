@@ -17,7 +17,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li><a href="../auth.login.php">Login</a></li>
-        	<li><a href="../auth.login.php">Post an Ad</a></li>
+        	<li><a href="ads.create.php">Post an Ad</a></li>
       </ul>
       <form class="navbar-form">
         <div class="form-group" style="display:inline;">
