@@ -1,47 +1,25 @@
 <?php
-define('DB_HOST', '127.0.0.1');
-define('DB_NAME','adlister_db');
-define('DB_USER','codeup');
-define('DB_PASS','password'); 
-
-$dbc = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USER, DB_PASS);
-$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// echo $dbc->getAttribute(PDO::ATTR_CONNECTION_STATUS) . "\n";
-
-// $clearTable = 'TRUNCATE TABLE users';
-// $dbc->exec($clearTable);
-
-// $dbc->exec('DROP TABLE IF EXISTS users');
-
-// $query = 'CREATE TABLE users (
-//         id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-//         firstname VARCHAR(30) NOT NULL,
-//         lastname VARCHAR(30) NOT NULL,
-//         email VARCHAR(30) NOT NULL,
-//         username VARCHAR(30) NOT NULL,
-//         password VARCHAR(10) NOT NULL,
-        
-//         PRIMARY KEY (id)
-//     )';
-// $dbc->exec($query);
+require '../database/adlisting_login.php';
+require '../database/db_connect.php';
 
 
-if (!empty($_POST['firstname']) && !empty($_POST['lastname']) &&
-        !empty($_POST['email']) && !empty($_POST['password']) &&
-        !empty($_POST['passwordCheck'])) {
+
+// if (!empty($_POST['firstname']) && !empty($_POST['lastname']) &&
+//         !empty($_POST['email']) && !empty($_POST['password']) &&
+//         !empty($_POST['passwordCheck'])) {
     
-    $query = "INSERT INTO users (firstname, lastname, email, username, password) 
-              VALUES (:firstname, :lastname, :email, :username, :password)";
+//     $query = "INSERT INTO users (firstname, lastname, email, username, password) 
+//               VALUES (:firstname, :lastname, :email, :username, :password)";
 
-$stmt = $dbc->prepare($query);
+// $stmt = $dbc->prepare($query);
 
-    $stmt->bindValue(':firstname', $_POST['firstname'], PDO::PARAM_STR);
-    $stmt->bindValue(':lastname', $_POST['lastname'], PDO::PARAM_STR);
-    $stmt->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
-    $stmt->bindValue(':username', $_POST['username'], PDO::PARAM_STR);
-    $stmt->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
-    $stmt->execute();
-}
+//     $stmt->bindValue(':firstname', $_POST['firstname'], PDO::PARAM_STR);
+//     $stmt->bindValue(':lastname', $_POST['lastname'], PDO::PARAM_STR);
+//     $stmt->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+//     $stmt->bindValue(':username', $_POST['username'], PDO::PARAM_STR);
+//     $stmt->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
+//     $stmt->execute();
+// }
 
 ?>
 <!DOCTYPE html>
