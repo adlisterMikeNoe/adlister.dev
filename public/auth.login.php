@@ -10,7 +10,7 @@ session_start();
 // };
 
 if(Auth::check()) {
-	header('Location: index.php');
+	header('Location: users.show.php');
 	exit();
 };
 
@@ -68,7 +68,7 @@ if(Input::has('username') && Input::has('password')){
 	        <div class="checkbox">
 	          <label>
 	            <input type="checkbox" value="remember-me"> Remember me
-	            <a href="signup.php" style='color:#494949'>Not a member? Signup now!!</a>
+	            <a href="users.create.php" style='color:#494949'>Not a member? Signup now!!</a>
 	          </label>
 	        </div>
 	        <button class="btn btn-lg btn-primary btn-block" type="submit" value= "login">Sign in</button>
