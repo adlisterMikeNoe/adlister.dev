@@ -49,6 +49,7 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +75,7 @@ if ($uploadOk == 0) {
         <div class="row">
             <div class="col-md-12">
                 <!-- <div class="well well-sm"> -->
-                    <form class="form-horizontal" method="post">
+                    <form class="form-horizontal" method="post" action='ads.create.php'>
                         <fieldset>
                             <legend class="text-center header">Create an Ad</legend>
 
