@@ -1,54 +1,18 @@
 <?
-require '../database/adlisting_login.php';
+require_once '../database/adlisting_login.php';
+require_once '../database/adlisting_login.php';
 
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+ var_dump($_GET);
+  var_dump($_POST);
 
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-}
 
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
+$zip_code= $_REQUEST['zip_code'] ;
+if ($zip_code=="1")
+    echo "You are serviced by branch 1!";
+else
+    echo "You are not serviced.";
 
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
 
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
-
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-}
 
 ?>
 <!DOCTYPE html>
@@ -59,7 +23,7 @@ if ($uploadOk == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcpbmyxz17BawCGQ3hX8yKMFzp2Zy9Ua8"></script>
 
     <title>Ad Lister | Create your ad</title>
 
@@ -82,14 +46,14 @@ if ($uploadOk == 0) {
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-bars bigicon"></i></span>
                                 <div class="col-md-8">
-                                    <input id="title" name="title" type="text" placeholder="Title" class="form-control">
+                                    <input id="title" required name="title" type="text" placeholder="Title" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-usd bigicon"></i></span>
                                 <div class="col-md-8">
-                                    <input id="price" name="price" type="number" placeholder="Price" class="form-control">
+                                    <input id="price" required name="price" type="number" placeholder="Price" class="form-control">
                                 </div>
                             </div>
 
@@ -100,10 +64,17 @@ if ($uploadOk == 0) {
                                 </div>
                             </div>
 
+                             <div class="form-group">
+                                <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-map-marker bigicon"></i></span>
+                                <div class="col-md-8">
+                                    <input id="zip_code" required name="zip_code"  pattern="[0-9].{5}" placeholder="Zip Code" class="form-control">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
                                 <div class="col-md-8">
-                                    <input id="phone" name="phone" type="tel" placeholder="Phone" class="form-control">
+                                    <input id="phone" required name="phone" type="tel" placeholder="Phone" class="form-control">
                                 </div>
                             </div>
 
@@ -117,7 +88,7 @@ if ($uploadOk == 0) {
                             <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
                                 <div class="col-md-8">
-                                    <textarea class="form-control" id="description" name="descrition" placeholder="Enter a detail description for your product or service." rows="7"></textarea>
+                                    <textarea class="form-control" id="description" required name="descrition" placeholder="Enter a detail description for your product or service." rows="7"></textarea>
                                 </div>
                             </div>
 

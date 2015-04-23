@@ -5,11 +5,10 @@ require_once '../database/db_connect.php';
 require_once '../utils/Auth.php';
 require_once '../utils/Input.php';
 
-$stmt = "INSERT INTO ads (id)
-		   VALUES (:id)";
+	$stmt = $dbc->prepare("SELECT * FROM ads");
+    $stmt->execute();
 
-		$id = Input::get('id');
-        
+    $ads = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
 ?>
 
@@ -25,7 +24,7 @@ $stmt = "INSERT INTO ads (id)
 
 	<?php foreach($ads as $ad): ?>
 	<tr>
-		<td><?php echo $ad['id'];?></td>
+		<td><a href = "ads.show.php?id=<?php echo $ad['id'];?>"><?php echo $ad['title'];?></a></td>
 	</tr>
 	<? endforeach;?>
 </table>
