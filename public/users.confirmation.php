@@ -16,15 +16,15 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) &&
         !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['user_name']) &&
         !empty($_POST['passwordCheck']) && ($_POST['password']== $_POST['passwordCheck'])){
     
-    $query = "INSERT INTO users (firstname, lastname, email, username, password) 
-              VALUES (:firstname, :lastname, :email, :username, :password)";
+    $query = "INSERT INTO users (first_name, last_name, email, user_name, password) 
+              VALUES (:first_name, :last_name, :email, :user_name, :password)";
 
 $stmt = $dbc->prepare($query);
 
-    $stmt->bindValue(':firstname', $_POST['first_name'], PDO::PARAM_STR);
-    $stmt->bindValue(':lastname', $_POST['last_name'], PDO::PARAM_STR);
+    $stmt->bindValue(':first_name', $_POST['first_name'], PDO::PARAM_STR);
+    $stmt->bindValue(':last_name', $_POST['last_name'], PDO::PARAM_STR);
     $stmt->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
-    $stmt->bindValue(':username', $_POST['user_name'], PDO::PARAM_STR);
+    $stmt->bindValue(':user_name', $_POST['user_name'], PDO::PARAM_STR);
     $stmt->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
     $stmt->execute();
 } else {
