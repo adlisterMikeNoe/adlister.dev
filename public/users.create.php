@@ -1,24 +1,9 @@
 <?php
+require_once '../utils/Auth.php';
+require_once '../utils/Input.php';
 
 
 
-
-// if (!empty($_POST['firstname']) && !empty($_POST['lastname']) &&
-//         !empty($_POST['email']) && !empty($_POST['password']) &&
-//         !empty($_POST['passwordCheck'])) {
-    
-//     $query = "INSERT INTO users (firstname, lastname, email, username, password) 
-//               VALUES (:firstname, :lastname, :email, :username, :password)";
-
-// $stmt = $dbc->prepare($query);
-
-//     $stmt->bindValue(':firstname', $_POST['firstname'], PDO::PARAM_STR);
-//     $stmt->bindValue(':lastname', $_POST['lastname'], PDO::PARAM_STR);
-//     $stmt->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
-//     $stmt->bindValue(':username', $_POST['username'], PDO::PARAM_STR);
-//     $stmt->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
-//     $stmt->execute();
-// }
 
 ?>
 <!DOCTYPE html>
@@ -46,47 +31,48 @@
 	    <div class="row">
 	        <div class="col-md-12">
 	            <!-- <div class="well well-sm"> -->
-	                <form class="form-horizontal" method="post" action='ads.create.php'>
+	                <form class="form-horizontal" method="post" action='users.confirmation.php'>
 	                    <fieldset>
 	                        <legend class="text-center header">Sign up</legend>
 
 	                        <div class="form-group">
 	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
 	                            <div class="col-md-8">
-	                                <input id="fname" name="firstname" type="text" placeholder="First Name" class="form-control">
+	                                <input id="fname" name="first_name" type="text" placeholder="First Name" class="form-control" required="required">
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
 	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
 	                            <div class="col-md-8">
-	                                <input id="lname" name="lastname" type="text" placeholder="Last Name" class="form-control">
+	                                <input id="lname" name="last_name" type="text" placeholder="Last Name" class="form-control" required="required">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group">
 	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
 	                            <div class="col-md-8">
-	                                <input id="email" name="email" type="email" placeholder="Email Address" class="form-control">
+	                                <input id="email" name="email" type="email" placeholder="Email Address" class="form-control" required="required">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group">
 	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-users bigicon"></i></span>
 	                            <div class="col-md-8">
-	                                <input id="user" name="username" type="text" placeholder="Username" class="form-control">
+	                                <input id="user" name="user_name" type="text" required pattern="\w+" placeholder="Username" class="form-control" required="required">
 	                            </div>
 	                        </div>
 
 	                        <div class="form-group">
 	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-unlock-alt bigicon"></i></span>
 	                            <div class="col-md-8">
-	                                <input id="pass" name="password" type="password" placeholder="Type Password" class="form-control">
+									<p>Password must contain six or more characters, at least one digit number, and at least one uppercase character.</p>
+	                                <input id="pass" name="password" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}" placeholder="Type Password" class="form-control" onchange="form.passwordCheck.pattern = this.value;" required="required">
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
-	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-unlock-alt bigicon"></i></span>
+	                            <span class="col-md-1 col-md-offset-2 text-center"><!-- <i class="fa fa-unlock-alt bigicon"></i> --></span>
 	                            <div class="col-md-8">
-	                                <input id="passCheck" name="passwordCheck" type="password" placeholder="Confirm Password" class="form-control">
+	                                <input id="passCheck" name="passwordCheck" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}" placeholder="Confirm Password" class="form-control" required="required">
 	                            </div>
 	                        </div>
 
@@ -94,7 +80,7 @@
 
 	                        <div class="form-group">
 	                            <div class="col-md-12 text-center">
-	                                <a href="login.php"><button type="submit" class="btn btn-primary btn-lg">Submit</button></a>
+	                                <button type="submit" name="submit_signup"class="btn btn-primary btn-lg">Submit</button>
 	                            </div>
 	                        </div>
 	                    </fieldset>
