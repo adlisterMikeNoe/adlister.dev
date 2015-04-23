@@ -1,6 +1,5 @@
 <?php
-require '../database/adlisting_login.php';
-require '../database/db_connect.php';
+
 
 
 
@@ -47,7 +46,7 @@ require '../database/db_connect.php';
 	    <div class="row">
 	        <div class="col-md-12">
 	            <!-- <div class="well well-sm"> -->
-	                <form class="form-horizontal" method="post" action='signup.php'>
+	                <form class="form-horizontal" method="post" action='ads.create.php'>
 	                    <fieldset>
 	                        <legend class="text-center header">Sign up</legend>
 

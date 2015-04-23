@@ -1,5 +1,6 @@
 <?php
 require_once '../database/adlisting_login.php';
+require_once '../database/db_connect.php';
 
 
 

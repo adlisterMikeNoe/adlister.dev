@@ -11,12 +11,12 @@ class Auth
 		{
 		
 			$_SESSION['LOGGED_IN_USER'] = $username;
-			$user = new Log_a();
+			$user = new Log();
 			$user->logInfo("user $username logged in");
 
 	 
 		}else{
-			$user = new Log_a();
+			$user = new Log();
 			$user->logError("User $username failed to log in!");
 		
 			}
