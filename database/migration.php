@@ -13,7 +13,9 @@ $query = 'CREATE TABLE users (
 	user_name VARCHAR(10) NOT NULL,
 	password VARCHAR(10) NOT NULL,
 	email VARCHAR(100) NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (user_name),
+	UNIQUE (email),
 	)';
 $dbc->exec($query);
 
@@ -21,10 +23,11 @@ $dbc->exec($query);
 $query = 'CREATE TABLE ads (
 		id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 		title VARCHAR(100) NOT NULL,
-		price DOUBLE (10, 2) NOT NULL,
+		price FLOAT NOT NULL,
 		phone int(10) NOT NULL,
 		image BLOB,
 		description TEXT NOT NULL,
+		date_posted DATE NOT NULL,
 		PRIMARY KEY (id)
 		)';
 $dbc->exec($query);

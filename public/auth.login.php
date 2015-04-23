@@ -4,31 +4,30 @@ require_once '../utils/Input.php';
 
 session_start();
 
-// if(!empty($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] == 'guest'){
-// 	header('Location: authorized.php');
-// 	exit();
-// };
+if(!empty($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] == 'guest'){
+	header('Location: authorized.php');
+	exit();
+};
 
 if(Auth::check()) {
 	header('Location: users.show.php');
 	exit();
 };
 
-if(Input::has('username') && Input::has('password')){
-	Auth::attempt(Input::get('username'),Input::get('password'));
-}
-// $username = isset($_POST['username']) ? $_POST['username'] : '';
-// $password = isset($_POST['password']) ? $_POST['password'] : '';
+// if(Input::has('username') && Input::has('password')){
+// }
+$username = isset($_POST['username']) ? $_POST['username'] : '';
+$password = isset($_POST['password']) ? $_POST['password'] : '';
 	$message = ' ';
-	// if ($username == 'guest' && $password == 'password' ){
-		
-	// 	$_SESSION['LOGGED_IN_USER'] = $username;
-	//  	header('Location: authorized.php');
-	//  exit();
-	// }elseif ($username == '' && $password == ''){
-	// 	$message = 'Please enter username and password';
+	Auth::attempt(Input::get('username'),Input::get('password'));
 
-	// }else{
+	if ($username == ' ' && $password == ' ' ){
+		
+		$_SESSION['LOGGED_IN_USER'] = $username;
+	 	header('Location: adlister.dev');
+	 exit();
+	}
+	// else{
 	// 	$message = 'Invalid username and password';
 	// }
 	// $user = Auth::user()

@@ -23,8 +23,8 @@ class Input
     public static function get($key, $default = null)
     {
         // TODO: Fill in this function
-        return isset($_GET[$key]) ? $_REQUEST[$key] : $default;
-        // return self::has($key) ? $_SESSION[$key] : $default;
+        // return isset($_GET[$key]) ? $_REQUEST[$key] : $default;
+        return self::has($key) ? $_SESSION[$key] : $default;
     }
 
 
