@@ -6,14 +6,14 @@
 
       public function __construct($prefix = 'log')
     {
-        $this->filename = $prefix . date('Y-m-d') . time() ."-log";
+        $this->filename = $prefix . date('Y-m-d');
         $this->handle = fopen($this->filename, 'a');
     }
 
  	public	function logMessage($logLevel, $message)
  		{
-            $date = date('Y-m-d');
- 			fwrite($this->handle, $date . $logLevel . $message . PHP_EOL);
+            $date = date('l jS \of F Y h:i:s A');
+ 			fwrite($this->handle, $date . " " . $logLevel .  " " . $message . PHP_EOL);
  			
         }
 
