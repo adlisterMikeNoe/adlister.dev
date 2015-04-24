@@ -4,6 +4,7 @@ require_once '..utils/Auth.php';
 require_once '..utils/Input.php';
 
 session_start();
+
 function endSession()
 {
     // Unset all of the session variables.

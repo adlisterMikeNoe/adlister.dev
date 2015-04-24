@@ -7,11 +7,13 @@
       public function __construct($prefix = 'log')
     {
         $this->filename = $prefix . date('Y-m-d');
-        $this->handle = fopen($this->filename, 'a');
+
+        $this->handle = fopen($this->filename, 'a+');
     }
 
  	public	function logMessage($logLevel, $message)
  		{
+
             $date = date('l jS \of F Y h:i:s A');
  			fwrite($this->handle, $date . " " . $logLevel .  " " . $message . PHP_EOL);
  			

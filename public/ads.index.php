@@ -5,6 +5,15 @@ require_once '../database/db_connect.php';
 require_once '../utils/Auth.php';
 require_once '../utils/Input.php';
 
+session_start();
+
+if (empty($_SESSION['LOGGED_IN_USER'])){
+  header('Location: auth.login.php');
+} else {
+  $welcome_message = "Hello " . $_SESSION['LOGGED_IN_USER'];
+}
+
+
 	$stmt = $dbc->prepare("SELECT * FROM ads");
     $stmt->execute();
 
@@ -40,6 +49,7 @@ require_once '../utils/Input.php';
 
 <div class="ads">
 <table class ="table">
+	<h1><?=$welcome_message;?></h1>
 
 
 	<?php foreach($ads as $ad): ?>

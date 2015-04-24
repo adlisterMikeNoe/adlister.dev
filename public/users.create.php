@@ -66,6 +66,7 @@ require_once '../utils/Input.php';
 	                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-unlock-alt bigicon"></i></span>
 	                            <div class="col-md-8">
 									<p>Password must contain at least six or more characters, one number and one uppercase character.</p>
+
 	                                <input id="pass" name="password" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}" placeholder="Type Password" class="form-control" onchange="form.passwordCheck.pattern = this.value;" required="required">
 	                            </div>
 	                        </div>

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -17,7 +18,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
           <li><a href="../auth.login.php">Login</a></li>
-        	<li><a href="ads.create.php">Post an Ad</a></li>
+          <li><a href="ads.create.php">Post an Ad</a></li>
+          <li><a href="ads.create.php"></a></li>
+        	<li><a href="auth.logout.php">Logout</a></li>
       </ul>
       <form class="navbar-form">
         <div class="form-group" style="display:inline;">
