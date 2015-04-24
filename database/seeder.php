@@ -37,10 +37,10 @@ $query = "INSERT INTO ads (title, price, phone, image, description, date_posted,
 // $insert->execute();
 
 $ads = [
-	['title'=>'Mac Book Pro','price'=>'1000','phone'=>'2100009876','image'=>'image.jpg','description'=>'Mac Book Pro, gentle used, bought it 6 months ago', 'date_posted'=>'2015-04-19', 'user_id'=>'1'],
-	['title'=>'iPhone 6','price'=>'600','phone'=>'2100009876','image'=>'image.jpg','description'=>'brand new iPhone i do not like and need to get rid of it','date_posted'=>'2015-04-19', 'user_id'=>'2'],
-	['title'=>'Mac Book Pro','price'=>'1000','phone'=>'2100009876','image'=>'image.jpg','description'=>'Mac Book Pro, gentle used, bought it 6 months ago', 'date_posted'=>'2015-04-19', 'user_id'=>'3'],
-	['title'=>'iPhone 6','price'=>'600','phone'=>'2100009876','image'=>'image.jpg','description'=>'brand new iPhone i do not like and need to get rid of it','date_posted'=>'2015-04-19', 'user_id'=>'2'],
+	['title'=>'Mac Book Pro','price'=>'1000','phone'=>'2100009876','image'=>'image.jpg','description'=>'Mac Book Pro, gentle used, bought it 6 months ago', 'date_posted'=>'2015-04-19','location'=>'San Antnio', 'user_id'=>'1'],
+	['title'=>'iPhone 6','price'=>'600','phone'=>'2100009876','image'=>'image.jpg','description'=>'brand new iPhone i do not like and need to get rid of it','date_posted'=>'2015-04-19','location'=>'NE San Antnio', 'user_id'=>'2'],
+	['title'=>'50in TV','price'=>'1000','phone'=>'2100009876','image'=>'image.jpg','description'=>'Mac Book Pro, gentle used, bought it 6 months ago', 'date_posted'=>'2015-04-19','location'=>'South San Antnio', 'user_id'=>'3'],
+	['title'=>'iPhone 6','price'=>'600','phone'=>'2100009876','image'=>'image.jpg','description'=>'brand new iPhone i do not like and need to get rid of it','date_posted'=>'2015-04-19','location'=>'NW San Antnio', 'user_id'=>'2'],
 ];
 
 $stmt = $dbc->prepare($query);
