@@ -6,11 +6,6 @@ require_once '../database/adlisting_login.php';
   var_dump($_POST);
 
 
-$zip_code= $_REQUEST['zip_code'] ;
-if ($zip_code=="1")
-    echo "You are serviced by branch 1!";
-else
-    echo "You are not serviced.";
 
 
 
@@ -39,7 +34,7 @@ else
         <div class="row">
             <div class="col-md-12">
                 <!-- <div class="well well-sm"> -->
-                    <form class="form-horizontal" method="post" action='ads.create.php'>
+                    <form class="form-horizontal" method="post" action='ads.confirmation.php'>
                         <fieldset>
                             <legend class="text-center header">Create an Ad</legend>
 
@@ -67,7 +62,7 @@ else
                              <div class="form-group">
                                 <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-map-marker bigicon"></i></span>
                                 <div class="col-md-8">
-                                    <input id="zip_code" required name="zip_code"  pattern="[0-9].{5}" placeholder="Zip Code" class="form-control">
+                                    <input id="zip_code" required name="zip_code" type="text" pattern="[0-9]{5}" placeholder="Zip Code" class="form-control">
                                 </div>
                             </div>
 
@@ -94,7 +89,7 @@ else
 
                             <div class="form-group">
                                 <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                    <button type="submit" name="submit_signup"class="btn btn-primary btn-lg">Submit</button>
                                 </div>
                             </div>
                         </fieldset>
