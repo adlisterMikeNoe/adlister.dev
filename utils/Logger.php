@@ -12,8 +12,8 @@
 
  	public	function logMessage($logLevel, $message)
  		{
-            $date = date('Y-m-d');
- 			fwrite($this->handle, $date . $logLevel . $message . PHP_EOL);
+            $date = date('l jS \of F Y h:i:s A');
+ 			fwrite($this->handle, . ' ' . $date . $logLevel . $message . PHP_EOL);
  			
         }
 
