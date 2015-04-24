@@ -49,8 +49,14 @@ class Auth
 	            $params["path"], $params["domain"],
 	            $params["secure"], $params["httponly"]
 	        	);
-	    	}
-			// header('Location: login.php');
+	    	} elseif (empty($_SESSION['LOGGED_IN_USER'])){
+				header('Location: index.php');
+				} else {
+
+					endSession();
+				}
+
+			
 	    }
 	    // session_destroy();
 

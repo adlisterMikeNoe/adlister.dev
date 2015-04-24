@@ -4,29 +4,43 @@ require_once '../utils/Input.php';
 
 session_start();
 
-if(!empty($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] == 'guest'){
-	header('Location: authorized.php');
-	exit();
-};
+var_dump(session_id());
 
-if(Auth::check()) {
-	header('Location: users.show.php');
-	exit();
-};
+var_dump($_POST);
 
-// if(Input::has('username') && Input::has('password')){
+if ( (isset($_POST['user_name']) && $_POST['user_name'] =='Mike')  && (isset($_POST['password']) && $_POST['password'] == 'password')) {
+	$_SESSION['LOGGED_IN_USER'] = $_POST['user_name'];
+	header('Location: ads.index.php');
+} elseif (empty($_POST)) {
+	$message = 'Please Sign in';
+} else {
+	$message = 'Username or Password do not match';
+}
+
+
+// if(!empty($_SESSION['LOGGED_IN_USER']) && $_SESSION['LOGGED_IN_USER'] == 'guest'){
+// 	header('Location: ads.index.php');
+// 	exit();
+// };
+
+// if(Auth::check()) {
+// 	header('Location: users.show.php');
+// 	exit();
+// };
+
+// if(Input::has('user_name') && Input::has('password')){
 // }
-$username = isset($_POST['username']) ? $_POST['username'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
-	$message = ' ';
-	Auth::attempt(Input::get('username'),Input::get('password'));
+// $user_name = isset($_POST['user_name']) ? $_POST['user_name'] : '';
+// $password = isset($_POST['password']) ? $_POST['password'] : '';
+// 	$message = ' ';
+// 	// Auth::attempt(Input::get('user_name'),Input::get('password'));
 
-	if ($username == ' ' && $password == ' ' ){
+// 	if ($user_name == ' ' && $password == ' ' ){
 		
-		$_SESSION['LOGGED_IN_USER'] = $username;
-	 	header('Location: adlister.dev');
-	 exit();
-	};
+// 		$_SESSION['LOGGED_IN_USER'] = $user_name;
+// 	 	header('Location: index.php');
+// 	 exit();
+// 	};
 	// else{
 	// 	$message = 'Invalid username and password';
 	// }
@@ -57,11 +71,11 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 
 	<section class="container-fluid" id="section1">
 		<div class="container">
-			<?= $message ?>
-	      <form action= "index.php" method= "POST" class="form-signin">
-	        <h2 class="form-signin-heading">Please sign in</h2>
+			
+	      <form method= "POST" action= "auth.login.php" class="form-signin">
+	        <h3 class="form-signin-heading"><?= $message ?></h3>
 	        <label for="inputUser" class="sr-only">Username</label>
-	        <input type="username" id="inputUser" class="form-control" name= "username" placeholder="Username" required autofocus>
+	        <input type="user_name" id="inputUser" class="form-control" name= "user_name" placeholder="Username" required autofocus>
 	        <label for="inputPassword" class="sr-only">Password</label>
 	        <input type="password" id="inputPassword" class="form-control" name= "password" placeholder="Password" required>
 	        <div class="checkbox">
