@@ -26,7 +26,7 @@ $password = isset($_POST['password']) ? $_POST['password'] : '';
 		$_SESSION['LOGGED_IN_USER'] = $username;
 	 	header('Location: adlister.dev');
 	 exit();
-	}
+	};
 	// else{
 	// 	$message = 'Invalid username and password';
 	// }

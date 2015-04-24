@@ -8,6 +8,8 @@ $dbc->exec('DROP TABLE IF EXISTS users,ads');
 
 $query = 'CREATE TABLE users (
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+
+	
 	first_name VARCHAR(100) NOT NULL, 
 	last_name VARCHAR(100) NOT NULL,
 	user_name VARCHAR(10) NOT NULL,
@@ -15,7 +17,7 @@ $query = 'CREATE TABLE users (
 	email VARCHAR(100) NOT NULL,
 	PRIMARY KEY (id),
 	UNIQUE (user_name),
-	UNIQUE (email),
+	UNIQUE (email)
 	)';
 $dbc->exec($query);
 
@@ -28,7 +30,11 @@ $query = 'CREATE TABLE ads (
 		image BLOB,
 		description TEXT NOT NULL,
 		date_posted DATE NOT NULL,
-		PRIMARY KEY (id)
+		zip_code int(5),
+		location VARCHAR(100),
+		user_id int UNSIGNED NOT NULL,
+		PRIMARY KEY (id),
+		FOREIGN KEY (user_id) REFERENCES users(id)
 		)';
 $dbc->exec($query);
 
