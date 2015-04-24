@@ -9,12 +9,12 @@ if (isset($_POST['submit_signup'])) {
     $message_signup = "Congratulations " . $_POST['first_name'] . "!! You've created a new account";
 } else {
 
-	$message_signup = "Oops! something went wrong";
+    $message_signup = "Oops! something went wrong";
 }
 
+
 if (!empty($_POST['first_name']) && !empty($_POST['last_name']) &&
-        !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['user_name']) &&
-        !empty($_POST['passwordCheck']) && ($_POST['password']== $_POST['passwordCheck'])){
+        !empty($_POST['email']) && !empty($_POST['user_name']) && !empty($_POST['password'])){
     
     $query = "INSERT INTO users (first_name, last_name, email, user_name, password) 
               VALUES (:first_name, :last_name, :email, :user_name, :password)";
@@ -27,10 +27,10 @@ $stmt = $dbc->prepare($query);
     $stmt->bindValue(':user_name', $_POST['user_name'], PDO::PARAM_STR);
     $stmt->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
     $stmt->execute();
-} else {
+} 
 
+header('Refresh: 5; URL=index.php');
 
-}
 
 ?>
 <!DOCTYPE html>
@@ -45,40 +45,50 @@ $stmt = $dbc->prepare($query);
 
     <title>Most Interesting Ad Lister Ever</title>
 
-	<?php require "../views/partials/header.php"; ?>
+    <?php require "../views/partials/header.php"; ?>
     
 
 </head>
 <body>
-	<?php require '../views/partials/navbar.php'; ?>
+    <?php require '../views/partials/navbar.php'; ?>
 
-	<section class="container-fluid" id="section2">
-	  
-	    <div class="container">
-	    <div class="row">
-	        <div class="col-md-12">
-	            <!-- <div class="well well-sm"> -->
-	                
-	                        <legend class="text-center header"><?=$message_signup?></legend>
-	                        
+    <section class="container-fluid" id="section2">
+      
+        <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <div class="well well-sm"> -->
+                    
+                            <legend class="text-center header"><?=$message_signup?></legend>
+                            
                             <div class="col-md-12 text-center">
-                            	<a class="btn btn-primary btn-lg" href="ads.create.php">Start posting an Ad</a>
+                                <h3>Hey <?=$_POST['first_name'];?>, Now you'll be redirected within <span id="timer">5</span> secs...</h3>
+                                <a class="btn btn-primary btn-lg" href="ads.create.php">Start posting an Ad</a>
 
                                 <!-- <button type="submit" class="btn btn-primary btn-lg">Start posting an Ad</button> -->
                             </div>
-	                       
-	            <!-- </div> -->
-	        </div>
-	    </div>
-	</div>
+                           
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
 
 
   
 </section>
 
+    <?php require '../views/partials/footer.php'; ?>
+//     <script type="text/javascript">
 
-	<?php require '../views/partials/footer.php'; ?>
+//     $('document').ready(function() {
+//     var timer = 5;
+//  if(timer > 0){
+//         timer--;
+//         $('#timer').html(timer);
+//     }, 800; 
+// });
+//     </script>
 
-	
+
 </body>
 </html>
