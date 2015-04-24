@@ -5,19 +5,19 @@ class Auth
 	public static $password = '$2y$10$SLjwBwdOVvnMgWxvTI4Gb.YVcmDlPTpQystHMO2Kfyi/DS8rgA0Fm';
 
 	public function __construct() {}
-	public static function attempt($username, $password)
+	public static function attempt($user_name, $password)
 	{
-		if (password_verify($password, self::$password ) && $username == 'guest' ) 
+		if (password_verify($password, self::$password ) && $user_name == 'guest' ) 
 		{
 		
-			$_SESSION['LOGGED_IN_USER'] = $username;
+			$_SESSION['LOGGED_IN_USER'] = $user_name;
 			$user = new Log();
-			$user->logInfo("user $username logged in");
+			$user->logInfo("user $user_name logged in");
 
 	 
 		}else{
 			$user = new Log();
-			$user->logError("User $username failed to log in!");
+			$user->logError("User $user_name failed to log in!");
 		
 			}
 
@@ -29,7 +29,7 @@ class Auth
 		// 	$this->logMessage('[Error]', $message);
 	}
 
-		public static function user($username)
+		public static function user($user_name)
 		{
 			return !isset($_SESSION['LOGGED_IN_USER']);
 		}
